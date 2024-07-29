@@ -1,8 +1,9 @@
 'use server'
 import { cookies } from "next/headers";
 import { redirect } from 'next/navigation'
+import getUrl from "../apis/apiLists";
 export async function loginFunction(previousState: any, formData: FormData) {
-    const response = await fetch('http://localhost:5000/api/v1/admin/login', {
+    const response = await fetch(getUrl('login'), {
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json"

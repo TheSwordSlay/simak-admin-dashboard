@@ -2,8 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
     const response = NextResponse.next()
+    const tkn = request.cookies.get("tkn")
+    
     if (request.nextUrl.pathname === "/") {
-        const tkn = request.cookies.get("tkn")
         if (tkn == undefined) {
             return NextResponse.redirect(new URL("/signin", request.url))
         }
@@ -11,7 +12,6 @@ export function middleware(request: NextRequest) {
     }
 
     if (request.nextUrl.pathname === "/signin") {
-        const tkn = request.cookies.get("tkn")
         if (tkn != undefined) {
             return NextResponse.redirect(new URL("/", request.url))
         }
