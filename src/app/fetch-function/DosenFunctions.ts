@@ -6,7 +6,7 @@ import { cookies } from "next/headers"
 export async function getDosen() {
     const res = await fetch(getUrl('dosen'), { 
       headers: {
-        "Authorization": "Bearer "+cookies().get("tkn"),
+        "Authorization": "Bearer "+cookies().get('tkn')?.value,
       },
       cache: 'no-store' 
     })
@@ -17,7 +17,7 @@ export async function getDosen() {
 export async function deleteDosen(id: String) {
     const response = await fetch(getUrl('delete-dosen')+'/'+id, {
         headers: {
-          "Authorization": "Bearer "+cookies().get("tkn"),
+          "Authorization": "Bearer "+cookies().get('tkn')?.value,
         },
         method: 'DELETE',
     })
@@ -29,7 +29,7 @@ export async function deleteDosen(id: String) {
 export async function addDosen(previousState: any, formData: FormData) {
     const response = await fetch(getUrl('add-dosen'), {
         headers: {
-          "Authorization": "Bearer "+cookies().get("tkn"),
+          "Authorization": "Bearer "+cookies().get('tkn')?.value,
         },
         method: 'POST',
         body: JSON.stringify({ 
@@ -52,7 +52,7 @@ export async function addDosen(previousState: any, formData: FormData) {
 export async function editDosen(previousState: any, formData: FormData) {
   const response = await fetch(getUrl('edit-dosen')+formData.get("id"), {
       headers: {
-        "Authorization": "Bearer "+cookies().get("tkn"),
+        "Authorization": "Bearer "+cookies().get('tkn')?.value,
       },
       method: 'PUT',
       body: JSON.stringify({ 
