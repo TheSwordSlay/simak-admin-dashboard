@@ -63,18 +63,18 @@ export default function DosenButton(dosen: any) {
                 required
               />
             </label> */}
-<input type="hidden" name="id" id="" value={dosen.data.id}/>
-<label className="mb-3 block text-sm font-medium text-black dark:text-white mt-5">
-                  Nama dosen
-                </label>
-                <input
-                  type="text"
-                  defaultValue={dosen.data.nama}
-                  placeholder="Type here"
-                  className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                  name="nama"
-                  required
-                />
+            <input type="hidden" name="id" id="" value={dosen.data.id} />
+            <label className="mb-3 mt-5 block text-sm font-medium text-black dark:text-white">
+              Nama dosen
+            </label>
+            <input
+              type="text"
+              defaultValue={dosen.data.nama}
+              placeholder="Type here"
+              className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+              name="nama"
+              required
+            />
 
             {/* <label className="form-control w-full">
               <div className="label">
@@ -93,20 +93,18 @@ export default function DosenButton(dosen: any) {
               />
             </label> */}
 
-<label className="mb-3 block text-sm font-medium text-black dark:text-white mt-3">
-                  NIP dosen
-                </label>
-                <input
-                  type="text"
-                  defaultValue={dosen.data.NIP}
-                  placeholder="Type here"
-                  pattern="[0-9]+"
-                  className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                  name="nip"
-                  required
-                />
-
-            
+            <label className="mb-3 mt-3 block text-sm font-medium text-black dark:text-white">
+              NIP dosen
+            </label>
+            <input
+              type="text"
+              defaultValue={dosen.data.NIP}
+              placeholder="Type here"
+              pattern="[0-9]+"
+              className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+              name="nip"
+              required
+            />
 
             {/* <label className="form-control w-full">
               <div className="label">
@@ -124,17 +122,17 @@ export default function DosenButton(dosen: any) {
               />
             </label> */}
 
-<label className="mb-3 block text-sm font-medium text-black dark:text-white mt-3">
-                  Email dosen
-                </label>
-                <input
-                  type="email"
-                  defaultValue={dosen.data.Email}
-                  placeholder="Type here"
-                  className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                  name="email"
-                  required
-                />
+            <label className="mb-3 mt-3 block text-sm font-medium text-black dark:text-white">
+              Email dosen
+            </label>
+            <input
+              type="email"
+              defaultValue={dosen.data.Email}
+              placeholder="Type here"
+              className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+              name="email"
+              required
+            />
 
             {/* <label className="form-control w-full">
               <div className="label">
@@ -151,16 +149,16 @@ export default function DosenButton(dosen: any) {
               />
             </label> */}
 
-<label className="mb-3 block text-sm font-medium text-black dark:text-white mt-3">
-                  Password dosen
-                </label>
-                <input
-                  type="text"
-                  placeholder="Type here"
-                  className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                  name="password"
-                  required
-                />
+            <label className="mb-3 mt-3 block text-sm font-medium text-black dark:text-white">
+              Password dosen
+            </label>
+            <input
+              type="text"
+              placeholder="Type here"
+              className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+              name="password"
+              required
+            />
 
             <div className="flex">
               <button

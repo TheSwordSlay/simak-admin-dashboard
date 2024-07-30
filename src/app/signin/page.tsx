@@ -1,18 +1,21 @@
 'use client'
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useFormState } from "react-dom";
 import { loginFunction } from "../auth/loginFunction";
 
-// export const metadata: Metadata = {
-//   title: "Next.js SignIn Page | TailAdmin - Next.js Dashboard Template",
-//   description: "This is Next.js Signin Page TailAdmin Dashboard Template",
-// };
-
 const SignIn: React.FC = () => {
   const [state, formAction] = useFormState(loginFunction, { message: {text: undefined} })
-  // console.log(state.message.text)
+  const [loading, setLoading] = useState(false)
+  const modref = useRef<any>(null)
+  
+  useEffect(() => {
+    if (state.message.text !== "Admin Login Success" && state.message.text != undefined) {
+      setLoading(false)
+      modref.current?.showModal()
+    }
+  }, [state])
   return (
     <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark min-h-screen">
       <div className="flex flex-wrap items-center">
@@ -171,7 +174,7 @@ const SignIn: React.FC = () => {
               Sign In to Admin Page
             </h2>
 
-            <form action={formAction}>
+            <form action={formAction} onSubmit={() => setLoading(true)}>
               <div className="mb-4">
                 <label className="mb-2.5 block font-medium text-black dark:text-white">
                   Email
@@ -241,11 +244,16 @@ const SignIn: React.FC = () => {
               </div>
 
               <div className="mb-5">
+                {loading ? 
+                <button className="btn w-full" disabled={true}>Signing in</button>
+                : 
                 <input
-                  type="submit"
-                  value="Sign In"
-                  className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
+                type="submit"
+                value="Sign In"
+                className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
                 />
+              }
+
               </div>
 
 
@@ -253,6 +261,20 @@ const SignIn: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <dialog ref={modref} id="my_modal_1" className="modal">
+        <div className="modal-box bg-white text-black dark:border-strokedark dark:bg-boxdark dark:text-white">
+          <h3 className="font-bold text-lg">Error</h3>
+          <p className="py-4">{state.message.text}</p>
+          <div className="modal-action">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button className="btn btn-active btn-primary">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+
     </div>
   );
 };
