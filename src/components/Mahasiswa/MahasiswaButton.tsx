@@ -7,7 +7,6 @@ import { MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
 
 export default function MahasiswaButton({mahasiswa, dosen} : any) {
-  console.log(dosen)
     function confirmDelete() {
         Swal.fire({
           title: "Anda yakin?",

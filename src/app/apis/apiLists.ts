@@ -1,6 +1,7 @@
 export default function getUrl(which: String) {
     const host = 'http://localhost:5000'
     const version = 'v1'
+    
     if (which === "login") {
         return host+'/api/'+version+'/admin/login'
     }
