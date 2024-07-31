@@ -1,20 +1,20 @@
 "use client";
 
-import { addDosen } from "@/app/fetch-function/DosenFunctions";
-import { useEffect, useRef, useState } from "react";
+import { addMahasiswa } from "@/app/fetch-function/MahasiswaFunctions";
+import { useEffect, useRef } from "react";
 import { useFormState } from "react-dom";
 
-export default function DosenAdd() {
+export default function MahasiswaAdd(dosen: any) {
   const addModal = useRef<any>(null);
   const errModal = useRef<any>(null);
-  const [state, formAction] = useFormState(addDosen, {
+  const [state, formAction] = useFormState(addMahasiswa, {
     message: { text: undefined, error: undefined },
   });
   useEffect(() => {
     if (state.message.error != undefined) {
       errModal.current?.showModal();
     }
-    if (state.message.text === "Success Create Dosen") {
+    if (state.message.text === "Mahasiswa Register Success") {
       addModal.current?.close();
     }
   }, [state]);
@@ -22,86 +22,20 @@ export default function DosenAdd() {
     <>
       <button
         className="btn btn-success ml-auto"
-        onClick={() => addModal.current?.showModal()}
+        onClick={() => {
+          addModal.current.showModal();
+        }}
       >
-        Tambah Dosen
+        Tambah Mahasiswa
       </button>
-      {/* Open the modal using document.getElementById('ID').showModal() method */}
+
       <dialog ref={addModal} id="my_modal_1" className="modal">
         <div className="modal-box bg-white text-black dark:border-strokedark dark:bg-boxdark dark:text-white">
-          <h3 className="text-lg font-bold">Tambah data dosen</h3>
+          <h3 className="text-lg font-bold">Tambah Mahasiswa</h3>
+
           <form action={formAction}>
-            {/* <label className="form-control w-full">
-              <div className="label">
-                <span className="label-text text-black dark:text-white">
-                  Nama dosen
-                </span>
-              </div>
-              <input
-                type="text"
-                placeholder="Type here"
-                className="input input-bordered w-full bg-white text-black dark:bg-boxdark dark:text-white"
-                name="nama"
-                required
-              />
-            </label> */}
-
             <label className="mb-3 mt-5 block text-sm font-medium text-black dark:text-white">
-              Nama dosen
-            </label>
-            <input
-              type="text"
-              placeholder="Type here"
-              className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-              name="nama"
-              required
-            />
-
-            {/* <label className="form-control w-full">
-              <div className="label">
-                <span className="label-text text-black dark:text-white">
-                  NIP dosen
-                </span>
-              </div>
-              <input
-                type="text"
-                pattern="[0-9]+"
-                placeholder="Type here"
-                className="input input-bordered w-full bg-white text-black dark:bg-boxdark dark:text-white"
-                name="nip"
-                required
-              />
-            </label> */}
-
-            <label className="mb-3 mt-3 block text-sm font-medium text-black dark:text-white">
-              NIP dosen
-            </label>
-            <input
-              type="text"
-              pattern="[0-9]+"
-              placeholder="Type here"
-              className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-              name="nip"
-              required
-            />
-
-            {/* <label className="form-control w-full">
-              <div className="label">
-                <span className="label-text text-black dark:text-white">
-                  Email dosen
-                </span>
-              </div>
-              <input
-                type="email"
-                placeholder="Type here"
-                className="input input-bordered w-full bg-white text-black dark:bg-boxdark dark:text-white"
-                name="email"
-                required
-              />
-            </label> */}
-
-            <label className="mb-3 mt-3 block text-sm font-medium text-black dark:text-white">
-              Email dosen
+              Email mahasiswa
             </label>
             <input
               type="email"
@@ -111,23 +45,63 @@ export default function DosenAdd() {
               required
             />
 
-            {/* <label className="form-control w-full">
+            <label className="form-control w-full">
               <div className="label">
-                <span className="label-text text-black dark:text-white">
-                  Password dosen
+                <span className="label-text mb-3 mt-5 block text-sm font-medium text-black dark:text-white">
+                  Dosen pembimbing
                 </span>
               </div>
-              <input
-                type="text"
-                placeholder="Type here"
-                className="input input-bordered w-full bg-white text-black dark:bg-boxdark dark:text-white"
-                name="password"
+              <select
+                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                name="dosen_id"
                 required
-              />
-            </label> */}
+              >
+                <option selected disabled></option>
+                {dosen.dosen.data.map((data: any, key: any) => (
+                  <option key={key} value={data.id}>
+                    {data.nama}
+                  </option>
+                ))}
+              </select>
+            </label>
 
-            <label className="mb-3 mt-3 block text-sm font-medium text-black dark:text-white">
-              Password dosen
+            <label className="mb-3 mt-5 block text-sm font-medium text-black dark:text-white">
+              Angkatan
+            </label>
+            <input
+              type="text"
+              pattern="[0-9]+"
+              placeholder="Type here"
+              className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+              name="angkatan"
+              required
+            />
+
+            <label className="mb-3 mt-5 block text-sm font-medium text-black dark:text-white">
+              NIM
+            </label>
+            <input
+              type="text"
+              pattern="[0-9]+"
+              placeholder="Type here"
+              className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+              name="nim"
+              required
+            />
+
+            <label className="mb-3 mt-5 block text-sm font-medium text-black dark:text-white">
+              Judul skripsi
+            </label>
+            <input
+              type="text"
+              placeholder="Type here"
+              className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+              name="judul_skripsi"
+              required
+            />
+
+            <label className="mb-3 mt-5 block text-sm font-medium text-black dark:text-white">
+              Password
             </label>
             <input
               type="text"
@@ -136,29 +110,20 @@ export default function DosenAdd() {
               name="password"
               required
             />
-
             <div className="flex">
-              <button
-                className="btn btn-success ml-auto mr-3 mt-5"
-                type="submit"
-              >
-                Tambah data dosen
+              <button className="btn btn-success ml-auto mr-3 mt-5" type="submit">
+                Tambah data mahasiswa
               </button>
               <div className="modal-action">
                 <form method="dialog">
                   {/* if there is a button in form, it will close the modal */}
-                  <button
-                    className="btn btn-error"
-                    onClick={() => {
-                      addModal.current?.close();
-                    }}
-                  >
-                    Close
-                  </button>
+                  <button className="btn btn-primary">Close</button>
                 </form>
               </div>
+
             </div>
           </form>
+
         </div>
       </dialog>
 

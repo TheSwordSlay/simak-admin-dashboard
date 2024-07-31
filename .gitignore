@@ -1,6 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 #api endpoints
-/src/app/apis
+# /src/app/apis
 
 # dependencies
 /node_modules
