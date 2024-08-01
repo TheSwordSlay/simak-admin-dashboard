@@ -148,7 +148,7 @@ export default function DosenAdd() {
                 <form method="dialog">
                   {/* if there is a button in form, it will close the modal */}
                   <button
-                    className="btn btn-error"
+                    className="btn btn-primary"
                     onClick={() => {
                       addModal.current?.close();
                     }}

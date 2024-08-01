@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { getDataAkademik } from "../fetch-function/DataAkademikFunctions";
 import DataAkademikAdd from "@/components/DataAkademik/DataAkademikAdd";
 import DataAkademikButton from "@/components/DataAkademik/DataAkademikButton";
+import { getMahasiswa } from "../fetch-function/MahasiswaFunctions";
 
 export const metadata: Metadata = {
   title: "Dashboard SIMAK UNSRI",
@@ -11,11 +12,12 @@ export const metadata: Metadata = {
 
 export default async function DataAkademik() {
   const dataAkademik = await getDataAkademik();
+  const dataMahasiswa = await getMahasiswa();
   return (
     <DefaultLayout>
-        <div className="flex mb-5">
-            <DataAkademikAdd></DataAkademikAdd>
-        </div>
+      <div className="mb-5 flex">
+        <DataAkademikAdd mahasiswa={dataMahasiswa}></DataAkademikAdd>
+      </div>
       <div className="rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
         <div className="max-w-full overflow-x-auto">
           <table className="w-full table-auto">
@@ -114,7 +116,10 @@ export default async function DataAkademik() {
 
                   <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                     <div className="flex items-center space-x-3.5">
-                      <DataAkademikButton dataAkademik={mhs}></DataAkademikButton>
+                      <DataAkademikButton
+                        dataAkademik={mhs}
+                        dataMahasiswa={dataMahasiswa}
+                      ></DataAkademikButton>
                     </div>
                   </td>
                 </tr>
