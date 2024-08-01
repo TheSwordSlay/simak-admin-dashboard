@@ -330,6 +330,17 @@ const config: Config = {
       },
     },
   },
+  daisyui: {
+    themes: [
+      {
+        light: {
+          ...require("daisyui/src/theming/themes")["light"],
+          "base-100": "#f1f5f9",
+        },
+      },
+      "dark"
+    ],
+  },
   plugins: [
     require('daisyui'),
   ],

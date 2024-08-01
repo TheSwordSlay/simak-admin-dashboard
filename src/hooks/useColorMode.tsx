@@ -11,6 +11,10 @@ const useColorMode = () => {
     colorMode === "dark"
       ? bodyClass.add(className)
       : bodyClass.remove(className);
+
+    colorMode === "dark"
+      ? document.getElementById('theRootHTML')!.dataset.theme = "dark"
+      : document.getElementById('theRootHTML')!.dataset.theme = "light";
   }, [colorMode]);
 
   return [colorMode, setColorMode];
